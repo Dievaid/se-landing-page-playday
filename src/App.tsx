@@ -1,20 +1,16 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Navbar } from './components/Navbar';
 import { Content } from './components/Content';
 import { Footer } from './components/Footer';
 
 import { PostHogProvider } from 'posthog-js/react';
 
-const apiKey = process.env.REACT_APP_POSTHOG_KEY;
+const apiKey = import.meta.env.VITE_APP_PUBLIC_POSTHOG_KEY;
 const options = {
-    api_host: process.env.REACT_APP_POSTHOG_HOST,
+    api_host: import.meta.env.VITE_APP_PUBLIC_POSTHOG_HOST,
 }
 
-export const App : React.FC = () => {
-    useEffect(() => {
-        console.log(apiKey, options);
-    }, []);
-
+export const App: React.FC = () => {
     return (
         <PostHogProvider
             apiKey={apiKey}
